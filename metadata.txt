@@ -1,0 +1,10 @@
+
+# Vital Language Layer™
+
+This file contains the full export of the metaphor-driven AI-Human communication framework filed under provisional patent with the USPTO.
+
+- **Filename:** metaphor-strategy.pdf
+- **Repo:** Builder’s Permit™ System
+- **Timestamp:** 6/28/25 at 9:40 p.m. EST 
+- **Filed with USPTO:** Yes (Provisional PPA on record)
+- **Summary:** This strategy converts metaphor and analogy into programmable behavioral feedback used for AI training, error correction, and user alignment.
