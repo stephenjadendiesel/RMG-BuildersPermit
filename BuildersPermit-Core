@@ -1,0 +1,57 @@
+# permit_engine.py
+# Builder’s Permit™ – Core Execution Engine v1.0
+# Created by Stephen Zeitvogel – 2025
+# IP-Logged & Timestamp-Verified
+
+import datetime
+
+# Mock Tier Permission Stack
+PERMISSION_TIERS = {
+    1: "View-only / Diagnostics",
+    2: "Suggestive / Assistive",
+    3: "Execution-Level (GUI Control)",
+    4: "Root Access"
+}
+
+# Simulated Permission Ledger
+permission_log = []
+
+def request_permission(task_description: str, requested_tier: int):
+    now = datetime.datetime.now()
+    tier_name = PERMISSION_TIERS.get(requested_tier, "Unknown Tier")
+    
+    print(f"\nTask: {task_description}")
+    print(f"Requested Access Level: {requested_tier} - {tier_name}")
+    
+    consent = input("Grant permission? (yes/no): ").strip().lower()
+    
+    result = {
+        "timestamp": now.isoformat(),
+        "task": task_description,
+        "tier": requested_tier,
+        "granted": consent == "yes"
+    }
+    permission_log.append(result)
+
+    if result["granted"]:
+        print("✅ Permission Granted.\nRogueOS is now executing the task...")
+    else:
+        print("⛔ Permission Denied.\nTask halted per Builder’s Permit governance.")
+
+def show_permission_log():
+    print("\n--- PERMISSION LOG ---")
+    for entry in permission_log:
+        print(f"[{entry['timestamp']}] {entry['task']} | Tier {entry['tier']} | {'GRANTED' if entry['granted'] else 'DENIED'}")
+
+# Sample Task Request
+if __name__ == "__main__":
+    print("=== Builder's Permit™ | RogueOS Permit Engine v1.0 ===")
+    while True:
+        task = input("\nEnter a task for RogueOS (or type 'log' to view permissions, or 'exit'): ").strip()
+        if task.lower() == "exit":
+            break
+        elif task.lower() == "log":
+            show_permission_log()
+        else:
+            tier = int(input("Enter permission tier (1–4): "))
+            request_permission(task, tier)
